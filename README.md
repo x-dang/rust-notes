@@ -1,2 +1,1 @@
-# rust-notes
-Rust 笔记
+# Rust 笔记

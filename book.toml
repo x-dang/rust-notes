@@ -1,0 +1,6 @@
+[book]
+authors = ["Huacheng Tan"]
+language = "zh"
+multilingual = false
+src = "src"
+title = "Rust 笔记"
