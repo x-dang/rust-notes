@@ -1,6 +1,6 @@
 # Rust 笔记
 
-- [前言](foreword.md)
+[前言](foreword.md)
 
 ## 开始
 
