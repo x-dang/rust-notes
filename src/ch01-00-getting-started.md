@@ -3,7 +3,10 @@
 
 ## 入坑
 
-本人不擅忽悠, 先请下面这位大神带你入坑吧:
+本人不擅忽悠, 先请下面这些大神带你入坑吧:
+
+* <a href="https://www.zhihu.com/question/30407715/answer/48032883" target="_blank">
+    如何看待 Rust 的应用前景</a>
 
 * <a href="https://www.infoq.cn/article/Uugi_eIJusEka1aSPmQM" target="_blank">
     想要改变世界的 Rust 语言</a>
@@ -31,8 +34,8 @@ uninstall` 来卸载 Rust, 查看本地文档执行 `rustup doc`.
 
 ## Hello, World!
 
-按照传统, 我们首先用 Rust 来写一个打印 `Hello, World!` 的程序. 创建一个名为 *main.rs* 的文件, 你的目
-录结构可能看起来像这样:
+按照传统, 我们首先写一个打印 `Hello, World!` 的程序. 创建一个名为 *main.rs* 的文件, 你的目录结构看起
+来可能像这样:
 
     codes/hello_world
     └── main.rs
@@ -68,14 +71,13 @@ Cargo 工具, 它将帮助你编写真正的 Rust 程序.
 ## Hello, Cargo
 
 Cargo 是 Rust 的构建系统和包管理器, 大多数 Rust 程序员使用这个工具来管理他们的项目. Cargo 可以做很多
-工作, 比如构建你的代码, 下载代码依赖的库等等.
+工作, 比如构建你的代码, 下载依赖的库等等.
 
 
 ### 使用 Cargo 创建一个新的项目
 
 ```sh
 cargo new hello_cargo
-cd hello_cargo
 ```
 
 现在你的目录结构看起来应该像这样:
@@ -99,7 +101,7 @@ edition = "2018"
 [dependencies]
 ```
 
-`[package]` 表示接下来的配置是用来配置一个包(package)的, `[dependencies]` 下面列出项目的依赖.
+`[package]` 表示接下来的配置是用来配置一个包(package)的, `[dependencies]` 下是项目的依赖(这里没有).
 
 打开 *src/main.rs*:
 
@@ -113,6 +115,8 @@ fn main() {
 
 
 ### 构建和运行一个 Cargo 项目
+
+进入 *hello_cargo* 目录并执行以下命令:
 
 ```sh
 cargo build
