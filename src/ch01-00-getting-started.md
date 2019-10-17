@@ -34,9 +34,8 @@ uninstall` 来卸载 Rust, 查看本地文档执行 `rustup doc`.
 按照传统, 我们首先用 Rust 来写一个打印 `Hello, World!` 的程序. 创建一个名为 *main.rs* 的文件, 你的目
 录结构可能看起来像这样:
 
-    codes
-    └── hello_world
-        └── main.rs
+    codes/hello_world
+    └── main.rs
 
 Rust 文件始终使用 *.rs* 后缀; 如果文件名包含多个单词, 使用下划线分隔, 例如相比 *helloworld.rs*, 我们
 更倾向于使用 *hello_world.rs*.
@@ -64,3 +63,67 @@ rustc main.rs
 
 使用 `rustc` 来编译单个文件的项目是没问题的, 但是如果项目中包含多个文件, 这将非常麻烦. 接下来介绍
 Cargo 工具, 它将帮助你编写真正的 Rust 程序.
+
+
+## Hello, Cargo
+
+Cargo 是 Rust 的构建系统和包管理器, 大多数 Rust 程序员使用这个工具来管理他们的项目. Cargo 可以做很多
+工作, 比如构建你的代码, 下载代码依赖的库等等.
+
+
+### 使用 Cargo 创建一个新的项目
+
+```sh
+cargo new hello_cargo
+cd hello_cargo
+```
+
+现在你的目录结构看起来应该像这样:
+
+    codes/hello_cargo
+    ├── Cargo.toml
+    └── src
+        └── main.rs
+
+*Cargo.toml* 是一个 [TOML](https://github.com/toml-lang/toml) 格式的文件, 打开它:
+
+```toml
+[package]
+name = "hello_cargo"
+version = "0.1.0"
+authors = ["Huacheng Tan <huacheng.tan@foxmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+```
+
+`[package]` 表示接下来的配置是用来配置一个包(package)的, `[dependencies]` 下面列出项目的依赖.
+
+打开 *src/main.rs*:
+
+```rust
+fn main() {
+    println!("Hello, world!");
+}
+```
+
+这个文件和 [Hello, World!](# "Hello, World!") 部分的手动输入的 *main.rs* 一样.
+
+
+### 构建和运行一个 Cargo 项目
+
+```sh
+cargo build
+./target/debug/hello_cargo
+```
+
+也可以把这两步结合起来:
+
+```sh
+cargo run
+```
+
+使用命令 `cargo check` 快速的检查代码是否可以编译, 但是不生成可执行文件; `cargo build --release` 构
+建启用了优化的 Release 版本, 生成的可执行文件在 *target/release/* 中.
