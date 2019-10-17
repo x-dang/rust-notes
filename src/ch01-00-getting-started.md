@@ -3,7 +3,7 @@
 
 ## 先入坑
 
-本人不擅忽悠, 先让下面这位大神们带你入坑吧:
+本人不擅忽悠, 先让下面这位大神带你入坑吧:
 
 - <a href="https://www.infoq.cn/article/Uugi_eIJusEka1aSPmQM" target="_blank">
     想要改变世界的 Rust 语言</a>
@@ -27,6 +27,8 @@ source ~/.cargo/env
 
 ## 实用命令
 
-    rustup update         : 更新 Rust
-    rustup self uninstall : 卸载 Rust
-    rustup doc            : 查看本地文档
+```sh
+rustup update         # 更新 Rust
+rustup self uninstall # 卸载 Rust
+rustup doc            # 查看本地文档
+```

@@ -1,7 +1,7 @@
-# Rust 笔记
+# Rust 简明教程
 
 
-[前言](foreword.md)
+[说在前面](foreword.md)
 
 
-- [开始](ch01-00-getting-started.md)
+- [开始之前](ch01-00-getting-started.md)
