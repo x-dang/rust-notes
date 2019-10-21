@@ -77,3 +77,21 @@ fn main() {
     println!("x: {}, y: {}", x, y);
 }
 ```
+
+你也可以通过关键字 `return` 并指定一个值来提前返回.
+
+```rust
+fn main() {
+    println!("return: {}", foo());
+}
+
+fn foo() -> i32 {
+    let x = 1;
+
+    if x == 1 {
+        return x;
+    }
+
+    x * 2
+}
+```
