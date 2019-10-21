@@ -12,3 +12,6 @@
     - [函数](ch02-03-functions.md)
     - [注释](ch02-04-comments.md)
     - [控制流](ch02-05-control-flow.md)
+
+- [所有权系统](ch03-00-ownership.md)
+    - [什么是所有权](ch03-01-what-is-ownership.md)
