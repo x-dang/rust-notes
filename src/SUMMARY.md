@@ -10,3 +10,5 @@
     - [变量及可变性](ch02-01-variables-and-mutability.md)
     - [数据类型](ch02-02-data-types.md)
     - [函数](ch02-03-functions.md)
+    - [注释](ch02-04-comments.md)
+    - [控制流](ch02-05-control-flow.md)
