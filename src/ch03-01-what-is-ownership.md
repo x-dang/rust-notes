@@ -81,6 +81,7 @@ println!("{}", s1); // 这里将出错, s1 不再有效
 ```rust
 let s1 = String::from("hello");
 let s2 = s1.clone();
+// 这里 s1, s2 都是有效的
 ```
 
 
@@ -95,9 +96,9 @@ let y = x;
 println!("x: {}, y: {}", x, y);
 ```
 
-这个代码似乎和我们刚才学到的有冲突: 我们没有调用 `clone`, 但是 `x` 仍然是有效的而且没有移动到 `y`.
+这段代码似乎和我们刚才学到的有冲突: 我们没有调用 `clone`, 但是 `x` 仍然是有效的而且没有被移动到 `y`.
 
-原因是整数这样的类型, 它们的大小在编译时是知道的, 而且完全是存储在栈上的, 所以拷贝是很快的. Rust
+原因是像整数这样的类型, 它们的大小在编译时是已知的, 而且完全是存储在栈上的, 所以拷贝是很快的. Rust
 有一个叫做 `Copy` trait 的特殊注解, 可以用在像整型这样的存储在栈上的类型上(后面会介绍 trait).
 如果一个类型拥有 `Copy` trait, 将一个变量赋值给另一个变量后, 原来的变量还是有效的. Rust
 不允许实现了 `Drop` trait 的类型拥有 `Copy` trait.
@@ -113,3 +114,65 @@ println!("x: {}, y: {}", x, y);
 
 
 ### 所有权与函数
+
+将值传递给函数的语义, 类似于将值赋值给变量. 此时值将被 `移动` 或 `拷贝`.
+
+```rust
+fn main() {
+    let s = String::from("hello");  // s 进入作用域
+
+    takes_ownership(s);             // s 的值被移动到函数
+                                    // ... s 在这之后不再有效
+
+    let x = 5;                      // x 进入作用域
+
+    makes_copy(x);                  // x 被拷贝到函数
+                                    // x 在这之后依然有效
+
+} // 这里, x 离开作用域, 然后 s 也离开作用域. 因为 s 的值被移动了, 不会对 s 调用 drop
+
+fn takes_ownership(some_string: String) { // some_string 进入作用域
+    println!("{}", some_string);
+} // 这里, some_string 离开作用域, 调用 drop. 使用的堆上的内存被释放.
+
+fn makes_copy(some_integer: i32) { // some_integer 进入作用域
+    println!("{}", some_integer);
+} // 这里, some_integer 离开作用域. some_integer 的类型是 Copy 的, 不会调用 drop
+```
+
+
+### 返回值与作用域
+
+函数返回值也会转移所有权.
+
+```rust
+fn main() {
+    let s = gives_ownership();         // gives_ownership 的返回值被移动到 s
+} // 这里 s 离开作用域, s 被 drop
+
+fn gives_ownership() -> String {
+    let some_string = String::from("hello"); // some_string 进入作用域
+
+    some_string                              // some_string 被返回, 并被移动到调用函数
+} // 这里 some_string 已被移动了, 不会调用 drop
+```
+
+如果我们想在调用一个函数后, 还能继续使用被移动到该函数的变量, 该怎么办呢?
+一个方法是在这个函数中将该变量返回:
+
+```rust
+fn main() {
+    let s = String::from("hello");
+    let (s, len) = calculate_length(s); // 这里旧的且无效的变量 s 被隐藏了
+
+    println!("s: {}, len: {}", s, len);
+}
+
+fn calculate_length(s: String) -> (String, usize) {
+    let len = s.len();
+
+    (s, len)
+}
+```
+
+但是你不觉得这样很麻烦吗? 下节介绍 `引用`, 它将解决该问题.
