@@ -20,3 +20,4 @@
 
 - [结构体](ch04-00-structs.md)
     - [定义结构体](ch04-01-defining-structs.md)
+    - [方法](ch04-03-method-syntax.md)
