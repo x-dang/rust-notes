@@ -17,3 +17,6 @@
     - [什么是所有权](ch03-01-what-is-ownership.md)
     - [引用与借用](ch03-02-references-and-borrowing.md)
     - [切片类型](ch03-03-the-slice-type.md)
+
+- [结构体](ch04-00-structs.md)
+    - [定义结构体](ch04-01-defining-structs.md)
