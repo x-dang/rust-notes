@@ -21,3 +21,8 @@
 - [结构体](ch04-00-structs.md)
     - [定义结构体](ch04-01-defining-structs.md)
     - [方法](ch04-03-method-syntax.md)
+
+- [枚举](ch05-00-enums.md)
+    - [定义枚举](ch05-01-defining-an-enum.md)
+    - [`match` 控制流](ch05-02-match.md)
+    - [`if let` 控制流](ch05-03-if-let.md)
